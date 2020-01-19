@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, View } from "react-native";
+import MainView from "./MainView";
+import CocktailStore from "../stores/CocktailStore";
 
 export default class CocktailSearchScreen extends React.Component {
   static navigationOptions = {
@@ -7,10 +8,11 @@ export default class CocktailSearchScreen extends React.Component {
   };
 
   render() {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>CocktailSearchScreen</Text>
-      </View>
-    );
+    const cocktailStore = new CocktailStore();
+    // All React Navigation screens receive this object as prop
+    const { navigation } = this.props;
+
+    // Navigation object is passed down to children components
+    return <MainView cocktailStore={cocktailStore} navigation={navigation} />;
   }
 }
