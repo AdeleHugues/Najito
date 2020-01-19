@@ -7,30 +7,46 @@ import CocktailSearchScreen from "./components/CocktailSearchScreen";
 import CocktailScreen from "./components/CocktailScreen";
 import IngredientSearchScreen from "./components/IngredientSearchScreen";
 
+const defaultNavigationOptions = {
+  headerStyle: {
+    backgroundColor: "#00bf00"
+  },
+  headerTintColor: "#fff",
+  headerTitleStyle: {
+    fontWeight: "bold"
+  }
+};
+
 const getTabBarIcon = (navigation, focused, tintColor) => {
   const { routeName } = navigation.state;
   let iconName;
   if (routeName === "Cocktails") {
     iconName = `ios-wine`;
   } else if (routeName === "Ingredients") {
-    // "ios-options" icon has no outlined version
     iconName = `ios-menu`;
   }
-
-  // You can return any component that you like here!
   return <Ionicons name={iconName} size={25} color={tintColor} />;
-  //return <IconComponent name={iconName} size={25} color={tintColor} />;
 };
 
-const CocktailStack = createStackNavigator({
-  CocktailSearch: CocktailSearchScreen,
-  Cocktail: CocktailScreen
-});
+const CocktailStack = createStackNavigator(
+  {
+    CocktailSearch: CocktailSearchScreen,
+    Cocktail: CocktailScreen
+  },
+  {
+    defaultNavigationOptions: defaultNavigationOptions
+  }
+);
 
-const IngredientStack = createStackNavigator({
-  IngredientSearch: IngredientSearchScreen,
-  Cocktail: CocktailScreen
-});
+const IngredientStack = createStackNavigator(
+  {
+    IngredientSearch: IngredientSearchScreen,
+    Cocktail: CocktailScreen
+  },
+  {
+    defaultNavigationOptions: defaultNavigationOptions
+  }
+);
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -38,14 +54,16 @@ const TabNavigator = createBottomTabNavigator(
     Ingredients: IngredientStack
   },
   {
-    //initialRouteName: "Cocktails",
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }) =>
         getTabBarIcon(navigation, focused, tintColor)
     }),
     tabBarOptions: {
       activeTintColor: "tomato",
-      inactiveTintColor: "gray"
+      inactiveTintColor: "gray",
+      labelStyle: {
+        fontSize: 14
+      }
     }
   }
 );
