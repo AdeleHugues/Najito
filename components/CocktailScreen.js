@@ -22,6 +22,14 @@ const styles = StyleSheet.create({
 });
 
 export default class CocktailScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false
+    };
+  }
+
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
 
