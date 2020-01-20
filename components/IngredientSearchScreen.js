@@ -21,7 +21,7 @@ export default class IngredientSearchScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: "Cocktails"
+    title: "Ingredients"
   };
 
   _onInput = text => {

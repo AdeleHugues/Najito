@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     padding: 10,
     marginBottom: 10,
-    fontSize: 18
+    fontSize: 16
   }
 });
 

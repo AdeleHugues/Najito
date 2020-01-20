@@ -18,11 +18,11 @@ const _createCocktail = drink => {
 
 const _createCocktails = drinks => {
   let cocktails = [];
-  // TODO handle no results (undefined array)
-  drinks.forEach(drink => {
-    // Add new cocktail at beginning of list
-    cocktails = [_createCocktail(drink), ...cocktails];
-  });
+  drinks !== null &&
+    drinks.forEach(drink => {
+      // Add new cocktail at beginning of list
+      cocktails = [_createCocktail(drink), ...cocktails];
+    });
   return cocktails;
 };
 
@@ -39,9 +39,19 @@ export const searchCocktailsByName = name =>
 export const searchCocktailsByIngredientName = name =>
   // API handles trailing spaces as ordinary characters: we remove them
   fetch(`${rootEndpoint}/filter.php?i=${name.trim()}`, { headers })
+    // FIXME: JSON parse error when ingredient is not found
     .then(response => response.json())
     .then(jsonResponse => jsonResponse.drinks)
     .then(drinks => _createCocktails(drinks))
+    .catch(error => {
+      console.error(error);
+    });
+
+export const findCocktailById = id =>
+  fetch(`${rootEndpoint}/lookup.php?i=${id}`, { headers })
+    .then(response => response.json())
+    .then(jsonResponse => jsonResponse.drinks)
+    .then(drinks => _createCocktail(drinks[0]))
     .catch(error => {
       console.error(error);
     });

@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    margin: 10
+    margin: 5
   },
   text: {
     marginLeft: 10,
-    fontSize: 20
+    fontSize: 18
   },
   image: { height: 75, width: 75 }
 });
@@ -24,7 +24,8 @@ export default class CocktailItem extends React.Component {
           style={styles.container}
           onPress={() => {
             navigation.navigate("Cocktail", {
-              cocktail: cocktail
+              cocktailId: cocktail.id,
+              cocktailName: cocktail.name
             });
           }}
         >
