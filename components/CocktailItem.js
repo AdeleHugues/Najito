@@ -28,7 +28,7 @@ export default class CocktailItem extends React.Component {
             });
           }}
         >
-          <Image style={styles.image} source={{ uri: cocktail.image }} />
+          <Image style={styles.image} source={{ uri: cocktail.thumbnail }} />
           <Text style={styles.text}>{cocktail.name}</Text>
         </TouchableOpacity>
       </View>

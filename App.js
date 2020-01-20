@@ -9,7 +9,7 @@ import IngredientSearchScreen from "./components/IngredientSearchScreen";
 
 const defaultNavigationOptions = {
   headerStyle: {
-    backgroundColor: "#00bf00"
+    backgroundColor: "#a700a7"
   },
   headerTintColor: "#fff",
   headerTitleStyle: {

@@ -14,7 +14,8 @@ export default class CocktailStore {
         const cocktail = new Cocktail(
           cocktailData.idDrink,
           cocktailData.strDrink,
-          cocktailData.strDrinkThumb
+          cocktailData.strDrinkThumb,
+          cocktailData.strInstructions
         );
         this.cocktails = [cocktail, ...this.cocktails];
       });
