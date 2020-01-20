@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { observer } from "mobx-react";
 import Input from "./Input";
+import CocktailItem from "./CocktailItem";
 
 const styles = StyleSheet.create({
   container: {
@@ -21,6 +22,8 @@ export default class MainView extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <View style={styles.container}>
         <Input
@@ -30,9 +33,9 @@ export default class MainView extends React.Component {
         <FlatList
           style={styles.cocktailContainer}
           data={this.props.cocktailStore.cocktails}
-          keyExtractor={drink => drink.idDrink}
+          keyExtractor={cocktail => cocktail.id}
           renderItem={({ item }) => {
-            return <Text>{item.strDrink}</Text>;
+            return <CocktailItem cocktail={item} navigation={navigation} />;
           }}
         />
       </View>
