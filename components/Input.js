@@ -20,23 +20,23 @@ export default class Input extends React.Component {
     super(props);
     // Store changing text into state
     this.state = { text: "" };
-
-    this.onChangeText = text => {
-      this.setState({ text });
-    };
-
-    this.onSubmitEditing = () => {
-      const { onSubmitEditing } = this.props;
-      const { text } = this.state;
-
-      if (!text) return; // Don't submit if empty
-
-      onSubmitEditing(text);
-
-      // Reset text after submission
-      this.setState({ text: "" });
-    };
   }
+
+  _onChangeText = text => {
+    this.setState({ text });
+  };
+
+  _onSubmitEditing = () => {
+    const { onSubmitEditing } = this.props;
+    const { text } = this.state;
+
+    if (!text) return; // Don't submit if empty
+
+    onSubmitEditing(text);
+
+    // Reset text after submission
+    this.setState({ text: "" });
+  };
 
   render() {
     const { placeholder } = this.props;
@@ -47,8 +47,8 @@ export default class Input extends React.Component {
         style={styles.input}
         value={text}
         placeholder={placeholder}
-        onChangeText={this.onChangeText}
-        onSubmitEditing={this.onSubmitEditing}
+        onChangeText={this._onChangeText}
+        onSubmitEditing={this._onSubmitEditing}
       />
     );
   }
