@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { searchCocktailsByName } from "../helpers/cocktaildbapi";
 import Input from "./Input";
-import CocktaiList from "./CocktailList";
+import CocktailList from "./CocktailList";
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +41,7 @@ export default class CocktailSearchScreen extends React.Component {
           placeholder="Enter a cocktail name"
           onSubmitEditing={this._onInput}
         />
-        <CocktaiList cocktails={cocktails} navigation={navigation} />
+        <CocktailList cocktails={cocktails} navigation={navigation} />
       </View>
     );
   }
